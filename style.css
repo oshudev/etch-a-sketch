@@ -1,0 +1,82 @@
+:root {
+    --default-ff: "Plus Jakarta Sans", sans-serif;
+    --heading: 2rem;
+    --text-body: 1rem;
+
+    --black: #040404;
+    --off-white: #f5f5f5;
+    --cerulean: #0c7489;
+    --violet: #8f00ff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding-top: 2rem;
+    font-family: var(--default-ff);
+    font-size: var(--text-body);
+    text-align: center;
+    color: var(--black);
+    background-color: var(--off-white);
+}
+
+.header,
+.footer,
+.h-wrapper {
+    padding: 1.125rem;
+}
+
+.header h1 {
+    font-size: var(--heading);
+}
+
+#container {
+    display: block;
+    max-width: 32rem;
+    margin-inline: auto;
+    border: 2px solid var(--black);
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cell {
+    --dim: 2rem;
+    display: block;
+    width: var(--dim);
+    height: var(--dim);
+}
+
+.cell.active {
+    background-color: var(--cerulean);
+}
+
+#reset {
+    display: inline-block;
+    margin-top: 1rem;
+    padding-block: 0.75rem;
+    width: 7.5rem;
+    font: inherit;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--off-white);
+    background-color: var(--violet);
+    border: 1px solid var(--violet);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: 300ms ease;
+}
+
+#reset:hover {
+    color: var(--violet);
+    background: transparent;
+    border: 1px solid var(--violet);
+}
