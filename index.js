@@ -1,32 +1,49 @@
 const container = document.getElementById("container");
-const GRID_SIZE = 16;
+const resetBtn = document.getElementById("reset");
+const createBtn = document.getElementById("create");
+const containerSize = 32;
 
-for (let i = 0; i < GRID_SIZE; i++) {
-    const row = document.createElement("div");
-    row.setAttribute("class", "row");
+function createGrid(size) {
+    container.innerHTML = "";
+    const cellSize = containerSize / size;
 
-    for (let j = 0; j < GRID_SIZE; j++) {
-        const cell = document.createElement("div");
-        cell.setAttribute("class", "cell");
+    for (let i = 0; i < size; i++) {
+        const row = document.createElement("div");
+        row.classList.add("row");
 
-        row.append(cell);
+        for (let j = 0; j < size; j++) {
+            const cell = document.createElement("div");
+            cell.classList.add("cell");
+            cell.style.width = `${cellSize}rem`;
+            cell.style.height = `${cellSize}rem`;
+
+            cell.addEventListener("mouseenter", () => {
+                cell.classList.add("active");
+            });
+
+            row.append(cell);
+        }
+
+        container.append(row);
     }
-
-    container.append(row);
 }
 
-const cells = document.querySelectorAll(".cell");
-
-cells.forEach((cell) => {
-    cell.addEventListener("mouseenter", () => {
-        cell.classList.add("active");
-    });
-});
-
-const resetBtn = document.getElementById("reset");
-
-resetBtn.onclick = () => {
-    cells.forEach((cell) => {
+function resetGrid() {
+    document.querySelectorAll(".cell").forEach((cell) => {
         cell.classList.remove("active");
     });
-};
+}
+
+function promptForGridSize() {
+    const gridSize = parseInt(window.prompt("Set size (2-100):"), 10);
+    if (gridSize >= 2 && gridSize <= 100) {
+        createGrid(gridSize);
+    } else {
+        alert("Please enter a number between 2 and 100.");
+    }
+}
+
+resetBtn.addEventListener("click", resetGrid);
+createBtn.addEventListener("click", promptForGridSize);
+
+createGrid(16);

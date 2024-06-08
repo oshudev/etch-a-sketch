@@ -58,8 +58,8 @@ body {
     background-color: var(--cerulean);
 }
 
-#reset {
-    display: inline-block;
+button {
+    display: block;
     margin-top: 1rem;
     padding-block: 0.75rem;
     width: 7.5rem;
@@ -75,8 +75,15 @@ body {
     transition: 300ms ease;
 }
 
-#reset:hover {
+button:hover {
     color: var(--violet);
     background: transparent;
     border: 1px solid var(--violet);
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 }
